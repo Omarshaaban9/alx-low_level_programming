@@ -1,53 +1,49 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * str_concat - get ends of input and add together for size
- * @s1: input one to concat
- * @s2: input two to concat
- * Return: concat of s1 and s2
+ * *_memset - fills memory with a constant byte
+ * @s: memory area to be filled
+ * @b: char to copy
+ * @n: number of times to copy b
+ *
+ * Return: pointer to the memory area s
  */
-
-char *str_concat(char *s1, char *s2)
+char *_memset(char *s, char b, unsigned int n)
 
 {
+	unsigned int i;
 
-	char *conct;
+	for (i = 0; i < n; i++)
 
-	int i, ci;
+	{
+		s[i] = b;
+	}
+	return (s);
+}
 
-	if (s1 == NULL)
-		s1 = "";
+/**
+ * *_calloc - allocates memory for an array
+ * @nmemb: number of elements in the array
+ * @size: size of each element
+ *
+ * Return: pointer to allocated memory
+ */
 
-	if (s2 == NULL)
-		s2 = "";
+void *_calloc(unsigned int nmemb, unsigned int size)
 
-	i = ci = 0;
+{
+	char *ptr;
 
-	while (s1[i] != '\0')
-		i++;
-
-	while (s2[ci] != '\0')
-		ci++;
-
-	conct = malloc(sizeof(char) * (i + ci + 1));
-
-	if (conct == NULL)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	i = ci = 0;
+	ptr = malloc(size * nmemb);
 
-	while (s1[i] != '\0')
-	{
-		conct[i] = s1[i];
-		i++;
-	}
+	if (ptr == NULL)
+		return (NULL);
 
-	while (s2[ci] != '\0')
-	{
-		conct[i] = s2[ci];
-		i++, ci++;
-	}
-	conct[i] = '\0';
-	return (conct);
+	_memset(ptr, 0, nmemb * size);
+
+	return (ptr);
 }
