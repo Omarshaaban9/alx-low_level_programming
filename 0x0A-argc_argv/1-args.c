@@ -1,14 +1,20 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
- * main - prints number of argument passed.
- * @argc: number of command lines argument
- * @argv: pointer to an array of command line arguments.
- * return: 0-succes, n0n-zero-fail
+ * main - print the number of arguments passed to the program
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: Always 0 (Success)
  */
 
-int main(int argc, char *argv[] __attribute__((unused)))
+int main(int argc, char *argv[])
+
 {
+
+(void) argv; /*Ignore argv*/
+
 	printf("%d\n", argc - 1);
 	return (0);
 }
